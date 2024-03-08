@@ -38,7 +38,9 @@ With the inventory and playbook defined, you can run the playbook with the follo
 ansible-playbook -i hosts.ini setup_ec2.yml
 ```
 
-This will execute the defined tasks on the specified hosts in our inventory.
+This will execute the defined tasks on the specified hosts in our inventory. It should look like this:
+
+![Ansible Logs](./AnsibleLogs.png)
 
 ## 5. Configure Ansible for Remote Key-Based Authentication
 

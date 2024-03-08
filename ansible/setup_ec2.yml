@@ -1,9 +1,9 @@
 ---
 - name: Install Docker and Python on AWS EC2 Ubuntu
   hosts: aws_ec2
-  become: true  # This will use sudo before running commands
+  become: true # This will use sudo before running commands
   vars:
-    arch_mapping:  # Map ansible architecture {{ ansible_architecture }} names to Docker's architecture names
+    arch_mapping: # Map ansible architecture {{ ansible_architecture }} names to Docker's architecture names
       x86_64: amd64
       # aarch64: arm64 # ARM64 architecture if you are using AWS Graviton instances
 
@@ -27,7 +27,7 @@
       ansible.builtin.file:
         path: /etc/apt/keyrings
         state: directory
-        mode: '0755'
+        mode: "0755"
 
     - name: Add Docker's official GPG key
       ansible.builtin.apt_key:
