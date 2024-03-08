@@ -50,4 +50,4 @@ Make sure the Ansible configuration is set up to use the `.pem` file for SSH con
 - Make sure the security group attached to your EC2 instance allows SSH connections.
 - You can use roles in Ansible to organize your tasks better and reuse code across multiple playbooks.
 
-Using Ansible will greatly simplifies the management of our cloud infrastructure by automating these types of operations.
+Using Ansible greatly simplifies the management of our cloud infrastructure by automating these types of operations.
