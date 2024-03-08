@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from server.routes.oil import router as OilRouter
+from server.routes.files import router as FilesRouter
 from fastapi.staticfiles import StaticFiles
 from decouple import config
 
@@ -22,7 +22,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(OilRouter, tags=["Oil"], prefix="/oil")
+app.include_router(FilesRouter, tags=["Files"], prefix="/files")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
