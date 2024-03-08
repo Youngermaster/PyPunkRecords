@@ -1,0 +1,48 @@
+---
+- name: Install Docker and Python on AWS EC2
+  hosts: aws_ec2
+  become: yes  # This will use sudo before running commands
+  tasks:
+    - name: Update apt-get repo and cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600 # Update the cache if it's older than an hour
+
+    - name: Install prerequisites
+      apt:
+        name:
+          - ca-certificates
+          - curl
+          - gnupg
+        state: latest
+
+    - name: Add Docker GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker repository
+      apt_repository:
+        repo: deb [arch={{ ansible_architecture }}] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+        state: present
+
+    - name: Install Docker and components
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+        state: latest
+
+    - name: Add user to the docker group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: yes
+
+    - name: Install Python 3.10 VENV
+      apt:
+        name: python3.10-venv
+        state: latest
