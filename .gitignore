@@ -161,3 +161,6 @@ cython_debug/
 
 # Mac OS
 .DS_Store
+
+# Ansible hosts.ini
+hosts.ini
